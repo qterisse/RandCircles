@@ -6,7 +6,7 @@
 /*   By: quteriss <quteriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 11:11:11 by quteriss          #+#    #+#             */
-/*   Updated: 2024/01/12 17:13:23 by quteriss         ###   ########.fr       */
+/*   Updated: 2024/01/12 17:26:08 by quteriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,16 @@
 # define WIN_PADDING 20
 
 # define MIN_CIRCLE_SIZE 30
-# define	MAX_CIRCLE_SIZE 100
+# define MAX_CIRCLE_SIZE 100
 
-# define BG_COLOR 0x333333
+# define BG_COLOR 0xdfded7
 # define CIRCLE_COLOR 0xf7f7f7
 
 typedef struct	s_canva {
 	void	*img;
 	char	*addr;
+	void	*mlx_win;
+	void	*mlx;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
