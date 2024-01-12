@@ -6,7 +6,7 @@
 /*   By: quteriss <quteriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 11:11:11 by quteriss          #+#    #+#             */
-/*   Updated: 2024/01/12 16:50:55 by quteriss         ###   ########.fr       */
+/*   Updated: 2024/01/12 17:13:23 by quteriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ typedef struct	s_point {
 typedef struct	s_clist
 {
 	struct s_clist	*next;
-	int				data[3]; // [center_x, center_y, radius]
+	int				*data; // [center_x, center_y, radius]
 }				t_clist;
 
 void	draw_circle(t_canva *canva, t_point *point, int radius, int color);
