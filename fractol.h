@@ -6,7 +6,7 @@
 /*   By: quteriss <quteriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 11:11:11 by quteriss          #+#    #+#             */
-/*   Updated: 2024/01/12 18:09:33 by quteriss         ###   ########.fr       */
+/*   Updated: 2024/01/12 18:28:49 by quteriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@
 # define CIRCLE_MARGIN 5
 
 # define BG_COLOR 0xdfded7
-# define CIRCLE_COLOR 0xf7f7f7
+# define MIDNIGHT_BLUE 0x191970
+# define CIRCLE_COLOR MIDNIGHT_BLUE
 
 typedef struct	s_canva {
 	void	*img;
@@ -53,6 +54,8 @@ typedef struct	s_clist
 	int				*data; // [center_x, center_y, radius]
 }				t_clist;
 
+void	background(t_canva *canva);
+
 void	draw_circle(t_canva *canva, t_point *point, int radius, int color);
 void	draw_filled_circle(t_canva *canva, t_point *point, int radius, int color);
 
@@ -67,6 +70,7 @@ void	free_points(t_point **points, int size);
 t_point	*init_point(double x, double y);
 int		inside_circle(t_point *center, int radius, int px, int py);
 
-void	push_front(t_clist **clist, int *data);
+void	push_front(t_clist **clist, t_clist *new_elem);
+t_clist *ft_new_elem(int data[3]);
 
 #endif

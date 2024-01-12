@@ -6,12 +6,13 @@
 #    By: quteriss <quteriss@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/11 15:09:53 by quteriss          #+#    #+#              #
-#    Updated: 2024/01/12 18:10:35 by quteriss         ###   ########.fr        #
+#    Updated: 2024/01/12 18:27:47 by quteriss         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS 	= randcircles.c \
 		drawing_tools/draw_circle.c \
+		drawing_tools/background.c \
 		utils/math_utils.c \
 		utils/minilibx_utils.c \
 		utils/point_utils.c \
@@ -19,7 +20,7 @@ SRCS 	= randcircles.c \
 	
 OBJS	= $(SRCS:.c=.o)
 CC		= cc
-FLAGS	= -Wall -Werror -Wextra
+FLAGS	= -Wall -Werror -Wextra -fsanitize=address -g3
 NAME	= fractol
 
 MINILIBX_PATH		=	minilibx/

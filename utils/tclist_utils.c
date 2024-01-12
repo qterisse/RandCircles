@@ -6,20 +6,29 @@
 /*   By: quteriss <quteriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 17:04:58 by quteriss          #+#    #+#             */
-/*   Updated: 2024/01/12 18:11:13 by quteriss         ###   ########.fr       */
+/*   Updated: 2024/01/12 18:52:13 by quteriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	push_front(t_clist **clist, int data[3])
+t_clist *ft_new_elem(int data[3])
 {
-	t_clist	*elem;
+	t_clist *elem;
 
 	elem = malloc(sizeof(t_clist));
-	if (!elem)
-		return ;
-	elem->next = *clist;
 	elem->data = data;
-	*clist = elem;
+	elem->next = NULL;
+	return (elem);
+}
+
+void	push_front(t_clist **clist, t_clist *new_elem)
+{
+	if (!clist)
+	{
+		*clist = new_elem;
+		return ;
+	}
+	new_elem->next = *clist;
+	*clist = new_elem;
 }

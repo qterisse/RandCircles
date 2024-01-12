@@ -6,7 +6,7 @@
 /*   By: quteriss <quteriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:49:03 by quteriss          #+#    #+#             */
-/*   Updated: 2024/01/12 18:10:12 by quteriss         ###   ########.fr       */
+/*   Updated: 2024/01/12 18:51:27 by quteriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,15 @@ int	get_max_size(t_clist **circles, int x, int y)
 	int		distance;
 	t_clist	*circle;
 
+	
 	min_distance = MAX_CIRCLE_SIZE;
+	if (!circles)
+		return (min_distance);
 	circle = *circles;
 	while (circle)
 	{
 		distance = get_distance(x, y, circle->data[0], circle->data[1]) - (circle->data[2] + CIRCLE_MARGIN);
+		// printf("for (%d, %d), distance with (%d, %d) = %d\n", x, y, circle->data[0], circle->data[1], distance);
 		if (distance < 0) // on est dans un cercle existant
 			return (-1);
 		if (distance < min_distance)
@@ -46,9 +50,9 @@ void	generate_circle(t_canva *canva, t_clist **circles, int *nb_circles)
 {
 	t_point	point;
 	int	max_size;
-	int data[3];
+	int data_pouet[3];
 	int	radius;
-	
+
 	point.x = ft_rand(
 		WIN_PADDING + MIN_CIRCLE_SIZE, 
 		WIN_WIDTH - (WIN_PADDING + MIN_CIRCLE_SIZE)
@@ -62,17 +66,17 @@ void	generate_circle(t_canva *canva, t_clist **circles, int *nb_circles)
 		return ;
 	radius = ft_rand(MIN_CIRCLE_SIZE, max_size);
 	draw_filled_circle(canva, &point, radius, CIRCLE_COLOR);
-	data[0] = point.x;
-	data[1] = point.y;
-	data[2] = radius;
-	push_front(circles, data);
+	data_pouet[0] = point.x;
+	data_pouet[1] = point.y;
+	data_pouet[2] = radius;
+	push_front(circles, ft_new_elem(data_pouet));
 	(*nb_circles)++;
 }
 
 int	main(void)
 {
 	int		nb_circles;
-	t_clist	**circles;
+	t_clist	*circles;
 	t_canva	img;
 	
 	circles = NULL;
@@ -82,9 +86,11 @@ int	main(void)
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
 		&img.endian);
 
+	background(&img);
+
 	nb_circles = 0;
-	while (nb_circles < NBR_CIRCLES)
-		generate_circle(&img, circles, &nb_circles);
+	while (nb_circles < 5)
+		generate_circle(&img, &circles, &nb_circles);
 
 	mlx_put_image_to_window(img.mlx, img.mlx_win, img.img, 0, 0);
 	mlx_loop(img.mlx);
