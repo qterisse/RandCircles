@@ -6,7 +6,7 @@
 #    By: quteriss <quteriss@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/11 15:09:53 by quteriss          #+#    #+#              #
-#    Updated: 2024/01/12 16:48:56 by quteriss         ###   ########.fr        #
+#    Updated: 2024/01/12 18:10:35 by quteriss         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ SRCS 	= randcircles.c \
 		utils/math_utils.c \
 		utils/minilibx_utils.c \
 		utils/point_utils.c \
+		utils/tclist_utils.c
 	
 OBJS	= $(SRCS:.c=.o)
 CC		= cc
