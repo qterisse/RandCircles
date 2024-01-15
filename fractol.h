@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: quteriss <quteriss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hlopez <hlopez@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 11:11:11 by quteriss          #+#    #+#             */
-/*   Updated: 2024/01/12 18:28:49 by quteriss         ###   ########.fr       */
+/*   Updated: 2024/01/15 12:43:34 by hlopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <math.h>
+# include <X11/X.h>
 
 # define WIN_WIDTH  1000
 # define WIN_HEIGHT 1000
@@ -41,6 +42,7 @@ typedef struct	s_canva {
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
+	struct s_clist	*circles;
 }				t_canva;
 
 typedef struct	s_point {
@@ -65,6 +67,8 @@ int		min(int n1, int n2);
 int		ft_rand(int min, int max);
 
 void	put_pixel(t_canva *canva, int x, int y, int color);
+int		key_bind(int key, t_canva *img);
+int		close_handler(t_canva *img);
 
 void	free_points(t_point **points, int size);
 t_point	*init_point(double x, double y);

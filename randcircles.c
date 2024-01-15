@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   randcircles.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: quteriss <quteriss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hlopez <hlopez@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:49:03 by quteriss          #+#    #+#             */
-/*   Updated: 2024/01/12 18:51:27 by quteriss         ###   ########.fr       */
+/*   Updated: 2024/01/15 13:17:21 by hlopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ int	get_max_size(t_clist **circles, int x, int y)
 	while (circle)
 	{
 		distance = get_distance(x, y, circle->data[0], circle->data[1]) - (circle->data[2] + CIRCLE_MARGIN);
-		// printf("for (%d, %d), distance with (%d, %d) = %d\n", x, y, circle->data[0], circle->data[1], distance);
-		if (distance < 0) // on est dans un cercle existant
+		printf("for (%d, %d), distance with (%d, %d) = %d\n", x, y, circle->data[0], circle->data[1], distance);
+		if (distance < MIN_CIRCLE_SIZE) // on est dans un cercle existant ou un cercle de taille minimum croisera un cercle
 			return (-1);
 		if (distance < min_distance)
 			min_distance = distance;
@@ -46,12 +46,12 @@ int	get_max_size(t_clist **circles, int x, int y)
 	return (min_distance);
 }
 
-void	generate_circle(t_canva *canva, t_clist **circles, int *nb_circles)
+void	generate_circle(t_canva *canva, int *nb_circles)
 {
 	t_point	point;
-	int	max_size;
-	int data_pouet[3];
-	int	radius;
+	int		max_size;
+	int 	data_pouet[3];
+	int		radius;
 
 	point.x = ft_rand(
 		WIN_PADDING + MIN_CIRCLE_SIZE, 
@@ -61,7 +61,7 @@ void	generate_circle(t_canva *canva, t_clist **circles, int *nb_circles)
 		WIN_PADDING + MIN_CIRCLE_SIZE, 
 		WIN_HEIGHT - (WIN_PADDING + MIN_CIRCLE_SIZE)
 	);
-	max_size = get_max_size(circles, point.x, point.y);
+	max_size = get_max_size(&(canva->circles), point.x, point.y);
 	if (max_size == -1)
 		return ;
 	radius = ft_rand(MIN_CIRCLE_SIZE, max_size);
@@ -69,17 +69,17 @@ void	generate_circle(t_canva *canva, t_clist **circles, int *nb_circles)
 	data_pouet[0] = point.x;
 	data_pouet[1] = point.y;
 	data_pouet[2] = radius;
-	push_front(circles, ft_new_elem(data_pouet));
+	push_front(&(canva->circles), ft_new_elem(data_pouet));
 	(*nb_circles)++;
 }
 
 int	main(void)
 {
 	int		nb_circles;
-	t_clist	*circles;
+	// t_clist	*circles;
 	t_canva	img;
 	
-	circles = NULL;
+	img.circles = NULL;
 	img.mlx = mlx_init();
 	img.mlx_win = mlx_new_window(img.mlx, WIN_WIDTH, WIN_HEIGHT, "Hello world");
 	img.img = mlx_new_image(img.mlx, WIN_WIDTH, WIN_HEIGHT);
@@ -87,10 +87,10 @@ int	main(void)
 		&img.endian);
 
 	background(&img);
-
+	mlx_hook(img.mlx_win, KeyPress, KeyPressMask, key_bind, &img);
 	nb_circles = 0;
-	while (nb_circles < 5)
-		generate_circle(&img, &circles, &nb_circles);
+	while (nb_circles < 50)
+		generate_circle(&img, &nb_circles);
 
 	mlx_put_image_to_window(img.mlx, img.mlx_win, img.img, 0, 0);
 	mlx_loop(img.mlx);
