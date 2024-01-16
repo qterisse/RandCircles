@@ -6,7 +6,7 @@
 /*   By: quteriss <quteriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 11:11:11 by quteriss          #+#    #+#             */
-/*   Updated: 2024/01/16 13:03:36 by quteriss         ###   ########.fr       */
+/*   Updated: 2024/01/16 13:25:44 by quteriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,20 @@
 # include <stdio.h>
 # include <math.h>
 # include <X11/X.h>
+# include <time.h>
 
 # define WIN_WIDTH  1000
 # define WIN_HEIGHT 1000
-# define WIN_PADDING 20
+# define WIN_PADDING 50
 
-# define NBR_CIRCLES 80
+# define NBR_CIRCLES 150
 
-# define MIN_CIRCLE_SIZE 30 // radius
+# define MIN_CIRCLE_SIZE 20 // radius
 # define MAX_CIRCLE_SIZE 80 // radius
 
 # define CIRCLE_MARGIN 2
 
-# define BG_COLOR 0xdfded7
+# define BG_COLOR 0xebe9e4
 # define MIDNIGHT_BLUE 0x191970
 # define CIRCLE_COLOR MIDNIGHT_BLUE
 
@@ -57,6 +58,8 @@ typedef struct	s_clist
 }				t_clist;
 
 void	background(t_canva *canva);
+void	borders(t_canva *canva);
+void	draw_rectangle(t_canva *canva, t_point *p1, t_point *p2, int color);
 
 void	draw_circle(t_canva *canva, t_point *point, int radius, int color);
 void	draw_filled_circle(t_canva *canva, t_point *point, int radius, int color);
