@@ -6,7 +6,7 @@
 /*   By: quteriss <quteriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 11:11:11 by quteriss          #+#    #+#             */
-/*   Updated: 2024/01/16 13:28:57 by quteriss         ###   ########.fr       */
+/*   Updated: 2024/01/16 13:29:34 by quteriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 # define CIRCLE_MARGIN 2
 
 # define BG_COLOR 		0xebe9e4
+
 # define MIDNIGHT_BLUE	0x191970
 # define JADE			0x00A36C
 # define ORANGE			0xFF5733
