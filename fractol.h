@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hlopez <hlopez@student.42.fr>              +#+  +:+       +#+        */
+/*   By: quteriss <quteriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 11:11:11 by quteriss          #+#    #+#             */
-/*   Updated: 2024/01/15 12:43:34 by hlopez           ###   ########.fr       */
+/*   Updated: 2024/01/16 13:03:36 by quteriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@
 # define WIN_HEIGHT 1000
 # define WIN_PADDING 20
 
-# define NBR_CIRCLES 100
+# define NBR_CIRCLES 80
 
 # define MIN_CIRCLE_SIZE 30 // radius
-# define MAX_CIRCLE_SIZE 100 // radius
+# define MAX_CIRCLE_SIZE 80 // radius
 
-# define CIRCLE_MARGIN 5
+# define CIRCLE_MARGIN 2
 
 # define BG_COLOR 0xdfded7
 # define MIDNIGHT_BLUE 0x191970

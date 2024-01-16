@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   math_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hlopez <hlopez@student.42.fr>              +#+  +:+       +#+        */
+/*   By: quteriss <quteriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 15:32:33 by quteriss          #+#    #+#             */
-/*   Updated: 2024/01/12 17:09:16 by hlopez           ###   ########.fr       */
+/*   Updated: 2024/01/16 12:59:27 by quteriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,9 @@ int min(int n1, int n2)
 int	ft_rand(int min, int max)
 {
 	double	n;
-	n = rand();
-	n /= 2147483647;
-	n *= max;
-	if (n < min)
-		n += min;
+
+	if (max == min)
+		return (max);
+	n = min + (rand() % (max - min));
 	return ((int)n);
 }
