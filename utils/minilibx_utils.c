@@ -6,7 +6,7 @@
 /*   By: hlopez <hlopez@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 15:34:25 by quteriss          #+#    #+#             */
-/*   Updated: 2024/01/15 12:44:47 by hlopez           ###   ########.fr       */
+/*   Updated: 2024/01/16 13:22:41 by hlopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,36 @@ void	put_pixel(t_canva *canva, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
+static void	define_color(int key, t_canva *img)
+{
+	if (key == 48)
+		img->color = MIDNIGHT_BLUE;
+	else if (key == 49)
+		img->color = JADE;
+	else if (key == 50)
+		img->color = IKB;
+	else if (key == 51)
+		img->color = ORANGE;
+	else if (key == 52)
+		img->color = BPURP;
+	else if (key == 53)
+		img->color = BLOOD;
+	else if (key == 54)
+		img->color = SALMON;
+	else if (key == 55)
+		img->color = GOLD;
+	else if (key == 56)
+		img->color = VEGAS;
+	else if (key == 57)
+		img->color = PASTEL_ORANGE;
+}
+
 int		key_bind(int key, t_canva *img)
 {
 	if (key == 65307 || key == 113)
 		close_handler(img);
+	else if (key >= 48 && key <= 57)
+		define_color(key, img);
 	return (0);
 }
 
