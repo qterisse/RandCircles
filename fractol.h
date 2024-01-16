@@ -6,7 +6,7 @@
 /*   By: quteriss <quteriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 11:11:11 by quteriss          #+#    #+#             */
-/*   Updated: 2024/01/16 13:25:44 by quteriss         ###   ########.fr       */
+/*   Updated: 2024/01/16 13:28:57 by quteriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,19 @@
 
 # define CIRCLE_MARGIN 2
 
-# define BG_COLOR 0xebe9e4
-# define MIDNIGHT_BLUE 0x191970
-# define CIRCLE_COLOR MIDNIGHT_BLUE
+# define BG_COLOR 		0xebe9e4
+# define MIDNIGHT_BLUE	0x191970
+# define JADE			0x00A36C
+# define ORANGE			0xFF5733
+# define BPURP			0xBF40BF
+# define IKB			0x002FA7
+# define BLOOD			0x880808
+# define SALMON			0xFA8072
+# define GOLD			0xFFD700
+# define VEGAS			0xC4B454
+# define PASTEL_ORANGE	0xFAC898
+
+# define CIRCLE_COLOR 	MIDNIGHT_BLUE
 
 typedef struct	s_canva {
 	void	*img;
@@ -44,6 +54,7 @@ typedef struct	s_canva {
 	int		line_length;
 	int		endian;
 	struct s_clist	*circles;
+	int		color;
 }				t_canva;
 
 typedef struct	s_point {
